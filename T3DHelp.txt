@@ -1,0 +1,66 @@
+T3D function
+
+Puts a 3D-border arround any control. This border has 2 levels: outer border and inner border.
+The border can be raised, inset or mixed, filled and not filled. It works only on a normal (standard)
+forms, with the backcolor RGB(192, 192, 192)
+
+Syntax:
+
+T3D Form, Control, Bevel, [Style], [Filled]
+
+
+The T3D function syntax has these named arguments:
+
+Part	Description:
+
+Form		The form where you want to have a 3D-control. The form must be in ScaleMode = 3 (Pixel)
+		and AutoRedraw = True.
+
+Control	The actual control to put in 3D. If you want a control in another form, you have to specify this.
+		Example: Form2.Label1 
+
+Bevel	The distance between the inner and outer border.
+
+Style		(Optional)The style of 3D, as described in settings. If you omit Style, it will be set to 0 (RaiseRaise).
+
+Filled	(Optional) Filled between the inner and outer border, as described in settings. If you omit Filled,
+		it will be set to 0 (no fill).
+
+
+Settings
+
+The Style argument settings are:
+
+Constant			Value			Description
+
+T3dRaiseRaise	0				Inner raised and outer raised
+T3dRaiseInset		1				Inner raised and outer inset
+T3dInsetRaise		2				Inner inset and outer raised
+T3dInsetInset		3				Inner inset and outer inset
+T3dNone			4				No border at all
+
+Note   	These constants are specified in the Subroutine.  As a result, the names
+		can be used anywhere in your code in place of the actual values.
+
+
+The Filled argument settings are:
+
+Constant			Value			Description
+
+T3dF0			0				Not filled	
+T3dF1			1				Filled
+
+Note   	These constants are specified in the Subroutine.  As a result, the names
+		can be used anywhere in your code in place of the actual values.
+
+
+Examples:
+
+T3D Form1, Label1, 20, T3dRaiseRaise, T3dF0 
+T3D Form1, Label2, 8, 0, T3dF1
+T3D Form1, Text1, 3, T3dRaiseInset
+T3D Form2, Form2.text1, 5, T3dInsetInset, T3dF1 
+
+You can acces the routine with a variabele, but there will be no return-value.
+
+a = T3D(Form1, Label1, 20, T3dRaiseRaise, T3dF0)
